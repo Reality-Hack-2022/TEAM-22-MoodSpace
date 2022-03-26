@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "983340935673",
+    "project_id": "moodspace-d9a87",
+    "storage_bucket": "moodspace-d9a87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983340935673:android:479909b8d9a133a4ce7528",
+        "android_client_info": {
+          "package_name": "io.moodspace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983340935673-21juskj8niml02311msib4cti9euhha7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBanDdXr7_QZx7smgliEACkUjZwkxyIrK4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983340935673-21juskj8niml02311msib4cti9euhha7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
