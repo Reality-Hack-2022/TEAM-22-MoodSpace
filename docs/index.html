@@ -45,8 +45,20 @@
 		let hand1, hand2;
 		let controller1, controller2;
 		let controllerGrip1, controllerGrip2;
+	
+		const tmpVector1 = new THREE.Vector3();
+		const tmpVector2 = new THREE.Vector3();
 
 		let controls;
+	
+		let grabbing = false;
+		const scaling = {
+			active: false,
+			initialDistance: 0,
+			object: null,
+			initialScale: 1
+		};
+
 
 		init();
 		animate();
@@ -57,6 +69,9 @@
 			document.body.appendChild( container );
 
 			scene = new THREE.Scene();
+			
+			camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 );
+			camera.position.set( 0, 1.6, 3 );
 
 			//
 
@@ -128,17 +143,7 @@
 		}
 		//
 
-		function animate() {
-
-			renderer.setAnimationLoop( render );
-
-		}
-
-		function render() {
-
-			renderer.render( scene, camera );
-
-		}
+		
 		//
 
 			window.THREE = THREE; // Used by APP Scripts.
@@ -163,9 +168,17 @@
 
 			} );
 
-				//renderer.render( scene, camera );
+			function animate() {
 
-			
+				renderer.setAnimationLoop( render );
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
 
 		</script>
 </body>
