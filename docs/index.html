@@ -46,92 +46,54 @@
 		let controller1, controller2;
 		let controllerGrip1, controllerGrip2;
 	
-		const tmpVector1 = new THREE.Vector3();
-		const tmpVector2 = new THREE.Vector3();
+		//const tmpVector1 = new THREE.Vector3();
+		//const tmpVector2 = new THREE.Vector3();
 
 		let controls;
+
+		container = document.createElement( 'div' );
+		document.body.appendChild( container );
 	
-		let grabbing = false;
-		const scaling = {
-			active: false,
-			initialDistance: 0,
-			object: null,
-			initialScale: 1
-		};
-
-
-		init();
 		animate();
 
-		function init() {
 
-			container = document.createElement( 'div' );
-			document.body.appendChild( container );
+		//camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 );
+		//camera.position.set( 0, 1.6, 3 );
 
-			scene = new THREE.Scene();
-			
-			camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 );
-			camera.position.set( 0, 1.6, 3 );
+		// controllers
 
-			//
+		controller1 = renderer.xr.getController( 0 );
+		scene.add( controller1 );
 
-			renderer = new THREE.WebGLRenderer( { antialias: true } );
-			renderer.setPixelRatio( window.devicePixelRatio );
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			renderer.outputEncoding = THREE.sRGBEncoding;
-			renderer.shadowMap.enabled = true;
-			renderer.xr.enabled = true;
+		controller2 = renderer.xr.getController( 1 );
+		scene.add( controller2 );
 
-			container.appendChild( renderer.domElement );
+		const controllerModelFactory = new XRControllerModelFactory();
+		const handModelFactory = new XRHandModelFactory();
 
-			document.body.appendChild( VRButton.createButton( renderer ) );
+		// Hand 1
+		controllerGrip1 = renderer.xr.getControllerGrip( 0 );
+		controllerGrip1.add( controllerModelFactory.createControllerModel( controllerGrip1 ) );
+		scene.add( controllerGrip1 );
 
-			// controllers
+		hand1 = renderer.xr.getHand( 0 );
+		hand1.add( handModelFactory.createHandModel( hand1 ) );
 
-			controller1 = renderer.xr.getController( 0 );
-			scene.add( controller1 );
+		scene.add( hand1 );
 
-			controller2 = renderer.xr.getController( 1 );
-			scene.add( controller2 );
+		// Hand 2
+		controllerGrip2 = renderer.xr.getControllerGrip( 1 );
+		controllerGrip2.add( controllerModelFactory.createControllerModel( controllerGrip2 ) );
+		scene.add( controllerGrip2 );
 
-			const controllerModelFactory = new XRControllerModelFactory();
-			const handModelFactory = new XRHandModelFactory();
+		hand2 = renderer.xr.getHand( 1 );
+		hand2.add( handModelFactory.createHandModel( hand2 ) );
+		scene.add( hand2 );
 
-			// Hand 1
-			controllerGrip1 = renderer.xr.getControllerGrip( 0 );
-			controllerGrip1.add( controllerModelFactory.createControllerModel( controllerGrip1 ) );
-			scene.add( controllerGrip1 );
+		//
 
-			hand1 = renderer.xr.getHand( 0 );
-			hand1.add( handModelFactory.createHandModel( hand1 ) );
+		window.addEventListener( 'resize', onWindowResize );
 
-			scene.add( hand1 );
-
-			// Hand 2
-			controllerGrip2 = renderer.xr.getControllerGrip( 1 );
-			controllerGrip2.add( controllerModelFactory.createControllerModel( controllerGrip2 ) );
-			scene.add( controllerGrip2 );
-
-			hand2 = renderer.xr.getHand( 1 );
-			hand2.add( handModelFactory.createHandModel( hand2 ) );
-			scene.add( hand2 );
-
-			//
-
-			const geometry = new THREE.BufferGeometry().setFromPoints( [ new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 0, 0, - 1 ) ] );
-
-			const line = new THREE.Line( geometry );
-			line.name = 'line';
-			line.scale.z = 5;
-
-			controller1.add( line.clone() );
-			controller2.add( line.clone() );
-
-			//
-
-			window.addEventListener( 'resize', onWindowResize );
-
-		}
 
 		function onWindowResize() {
 
@@ -173,7 +135,7 @@
 
 			
 
-			document.body.appendChild( player.dom );
+			//document.body.appendChild( player.dom );
 
 			window.addEventListener( 'resize', function () {
 
