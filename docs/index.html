@@ -41,6 +41,9 @@
 			// Initialize Firebase
 			const app = initializeApp(firebaseConfig);
 			const analytics = getAnalytics(app);
+			
+			import { getDatabase } from "firebase/database";
+			window.Database = getDatabase(app)
 		</script>
 		<script type="module">
 
