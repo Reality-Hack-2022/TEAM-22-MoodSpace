@@ -57,33 +57,6 @@
 			document.body.appendChild( container );
 
 			scene = new THREE.Scene();
-			scene.background = new THREE.Color( 0x444444 );
-
-			camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 );
-			camera.position.set( 0, 1.6, 3 );
-
-			controls = new OrbitControls( camera, container );
-			controls.target.set( 0, 1.6, 0 );
-			controls.update();
-
-			const floorGeometry = new THREE.PlaneGeometry( 4, 4 );
-			const floorMaterial = new THREE.MeshStandardMaterial( { color: 0x222222 } );
-			const floor = new THREE.Mesh( floorGeometry, floorMaterial );
-			floor.rotation.x = - Math.PI / 2;
-			floor.receiveShadow = true;
-			scene.add( floor );
-
-			scene.add( new THREE.HemisphereLight( 0x808080, 0x606060 ) );
-
-			const light = new THREE.DirectionalLight( 0xffffff );
-			light.position.set( 0, 6, 0 );
-			light.castShadow = true;
-			light.shadow.camera.top = 2;
-			light.shadow.camera.bottom = - 2;
-			light.shadow.camera.right = 2;
-			light.shadow.camera.left = - 2;
-			light.shadow.mapSize.set( 4096, 4096 );
-			scene.add( light );
 
 			//
 
@@ -192,7 +165,7 @@
 
 				//renderer.render( scene, camera );
 
-			}
+			
 
 		</script>
 </body>
