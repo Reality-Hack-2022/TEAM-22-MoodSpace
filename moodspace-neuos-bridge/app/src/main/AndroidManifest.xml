@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.neuos.a2048"
+    package="io.moodspace"
     android:targetSandboxVersion="2">
 
     <queries>
@@ -20,11 +20,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/_048_logo_512"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".NeuosActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
@@ -33,43 +34,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
-            <!--intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter-->
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="tpcstld.me"
-                    android:path="/2048"
-                    android:scheme="http" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="tpcstld.me"
-                    android:path="/2048"
-                    android:scheme="https" />
-            </intent-filter>
-
-            <meta-data
-                android:name="default-url"
-                android:value="http://tpcstld.me/2048" />
         </activity>
 
     </application>
