@@ -92,37 +92,6 @@
 
 		//
 
-		window.addEventListener( 'resize', onWindowResize );
-
-
-		function onWindowResize() {
-
-			camera.aspect = window.innerWidth / window.innerHeight;
-			camera.updateProjectionMatrix();
-
-			renderer.setSize( window.innerWidth, window.innerHeight );
-
-		}
-	
-		function animate() {
-
-			renderer.setAnimationLoop( render );
-
-		}
-
-		function render() {
-
-			renderer.render( scene, camera );
-
-		}
-
-		//
-
-		
-		//
-		init();
-		animate();
-
 		window.THREE = THREE; // Used by APP Scripts.
 		window.VRButton = VRButton; // Used by APP Scripts.
 		var loader = new THREE.FileLoader();
